@@ -70,11 +70,12 @@ If you are packaging this launcher to give to a team, you can pre-configure the 
 
 ## 📥 Download
 
-Get the latest standalone executable and start organizing your workspace immediately. No installation or .NET SDK required!
+Get the latest standalone executable and start organizing your workspace immediately. No installation or SDK required!
 
-[![Download](https://github.com/Jnbla6/WhiteLabelLauncher/raw/main/bin/Release/net8.0-windows/win-x64/publish/WhiteLabelLauncher.exe)]
+👉 **[Download WhiteLabelLauncher.exe](https://github.com/Jnbla6/WhiteLabelLauncher/raw/main/bin/Release/net8.0-windows/win-x64/publish/WhiteLabelLauncher.exe)**
 
-> **⚠️ Note on Windows SmartScreen:** > Because this is a newly built, independent desktop application, Windows Defender might display a blue "Windows protected your PC" warning on the first launch. This is completely normal. 
-> To use the launcher, simply click **More info** ➔ **Run anyway**.
+*(Alternatively, you can click here to [view the file on GitHub](https://github.com/Jnbla6/WhiteLabelLauncher/blob/main/bin/Release/net8.0-windows/win-x64/publish/WhiteLabelLauncher.exe))*
 
+> **⚠️ Note on Security Warnings:** > Because this is a newly built, independent desktop application, your operating system or antivirus might display a security warning (such as an "unrecognized app" prompt) on the first launch. This is completely normal for unsigned executables. 
+> To use the launcher, simply bypass the warning (e.g., click **More info** ➔ **Run anyway**).
 ---
