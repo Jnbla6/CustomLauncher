@@ -74,8 +74,6 @@ Get the latest standalone executable and start organizing your workspace immedia
 
 👉 **[Download WhiteLabelLauncher.exe](https://github.com/Jnbla6/WhiteLabelLauncher/raw/main/bin/Release/net8.0-windows/win-x64/publish/WhiteLabelLauncher.exe)**
 
-*(Alternatively, you can click here to [view the file on GitHub](https://github.com/Jnbla6/WhiteLabelLauncher/blob/main/bin/Release/net8.0-windows/win-x64/publish/WhiteLabelLauncher.exe))*
-
 > **⚠️ Note on Security Warnings:** > Because this is a newly built, independent desktop application, your operating system or antivirus might display a security warning (such as an "unrecognized app" prompt) on the first launch. This is completely normal for unsigned executables. 
 > To use the launcher, simply bypass the warning (e.g., click **More info** ➔ **Run anyway**).
 ---
