@@ -72,7 +72,7 @@ If you are packaging this launcher to give to a team, you can pre-configure the 
 
 Get the latest standalone executable and start organizing your workspace immediately. No installation or .NET SDK required!
 
-[![Download](https://img.shields.io/badge/Download-.EXE_for_Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Jnbla6/WhiteLabelLauncher/raw/main/bin/Release/net8.0-windows/win-x64/publish/WhiteLabelLauncher.exe)]
+[![Download](https://github.com/Jnbla6/WhiteLabelLauncher/raw/main/bin/Release/net8.0-windows/win-x64/publish/WhiteLabelLauncher.exe)]
 
 > **⚠️ Note on Windows SmartScreen:** > Because this is a newly built, independent desktop application, Windows Defender might display a blue "Windows protected your PC" warning on the first launch. This is completely normal. 
 > To use the launcher, simply click **More info** ➔ **Run anyway**.
