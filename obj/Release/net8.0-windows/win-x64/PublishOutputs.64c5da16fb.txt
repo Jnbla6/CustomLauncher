@@ -1,0 +1,2 @@
+C:\Users\Badr\Desktop\Codes\WhiteLabelLauncher\bin\Release\net8.0-windows\win-x64\publish\WhiteLabelLauncher.pdb
+C:\Users\Badr\Desktop\Codes\WhiteLabelLauncher\bin\Release\net8.0-windows\win-x64\publish\WhiteLabelLauncher.exe

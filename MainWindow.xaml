@@ -1,0 +1,396 @@
+<Window x:Class="WhiteLabelLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Launcher"
+        Width="880" Height="560"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+
+        <!-- ══════════════════════════════════════════
+             MINIMAL SCROLLBAR  (thin, 5 px track)
+        ══════════════════════════════════════════ -->
+        <Style TargetType="{x:Type ScrollBar}">
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Width"    Value="5"/>
+            <Setter Property="MinWidth" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <Grid Background="Transparent" Width="5" SnapsToDevicePixels="True">
+                            <Track x:Name="PART_Track" IsDirectionReversed="True">
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static ScrollBar.PageUpCommand}"
+                                                  Opacity="0" Focusable="False"/>
+                                </Track.DecreaseRepeatButton>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static ScrollBar.PageDownCommand}"
+                                                  Opacity="0" Focusable="False"/>
+                                </Track.IncreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Thumb>
+                                        <Thumb.Template>
+                                            <ControlTemplate TargetType="{x:Type Thumb}">
+                                                <Border Background="#3A3A3D"
+                                                        CornerRadius="2.5"
+                                                        Margin="0,3"/>
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ══════════════════════════════════════════
+             WINDOW CONTROL BUTTONS
+        ══════════════════════════════════════════ -->
+        <Style x:Key="WinCtrlBtn" TargetType="Button">
+            <Setter Property="Width"           Value="30"/>
+            <Setter Property="Height"          Value="30"/>
+            <Setter Property="Cursor"          Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontFamily"      Value="Segoe MDL2 Assets"/>
+            <Setter Property="FontSize"        Value="11"/>
+            <Setter Property="Foreground"      Value="#4A4A4E"/>
+            <Setter Property="Background"      Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#252528"/>
+                                <Setter Property="Foreground" Value="#AEAEB2"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#323235"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="WinCloseBtn" TargetType="Button"
+               BasedOn="{StaticResource WinCtrlBtn}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF3B30"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- ══════════════════════════════════════════
+             SIDEBAR NAV BUTTON
+        ══════════════════════════════════════════ -->
+        <Style x:Key="NavBtn" TargetType="Button">
+            <Setter Property="Width"           Value="44"/>
+            <Setter Property="Height"          Value="44"/>
+            <Setter Property="Cursor"          Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontFamily"      Value="Segoe MDL2 Assets"/>
+            <Setter Property="FontSize"        Value="18"/>
+            <Setter Property="Foreground"      Value="#3A3A3D"/>
+            <Setter Property="Background"      Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="12">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#16161A"/>
+                                <Setter Property="Foreground" Value="#8E8E93"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#1E1E22"/>
+                            </Trigger>
+                            <Trigger Property="Tag" Value="active">
+                                <Setter Property="Foreground" Value="#FF9500"/>
+                                <Setter TargetName="Bd" Property="Background" Value="#201508"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ══════════════════════════════════════════
+             SETTINGS BUTTONS  (Browse / Reset)
+        ══════════════════════════════════════════ -->
+        <Style x:Key="SettingsBrowseBtn" TargetType="Button">
+            <Setter Property="Height"          Value="28"/>
+            <Setter Property="Padding"         Value="12,0"/>
+            <Setter Property="Cursor"          Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontFamily"      Value="Inter, Segoe UI"/>
+            <Setter Property="FontSize"        Value="11"/>
+            <Setter Property="FontWeight"      Value="SemiBold"/>
+            <Setter Property="Foreground"      Value="#FF9500"/>
+            <Setter Property="Background"      Value="#201508"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="7">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#2C1E0C"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Bd" Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SettingsResetBtn" TargetType="Button">
+            <Setter Property="Height"          Value="28"/>
+            <Setter Property="Padding"         Value="12,0"/>
+            <Setter Property="Cursor"          Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontFamily"      Value="Inter, Segoe UI"/>
+            <Setter Property="FontSize"        Value="11"/>
+            <Setter Property="Foreground"      Value="#6E6E73"/>
+            <Setter Property="Background"      Value="#1A1A1D"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="7">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#222226"/>
+                                <Setter Property="Foreground" Value="#AEAEB2"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Bd" Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SettingsDeleteBtn" TargetType="Button">
+            <Setter Property="Height"          Value="28"/>
+            <Setter Property="Padding"         Value="12,0"/>
+            <Setter Property="Cursor"          Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontFamily"      Value="Inter, Segoe UI"/>
+            <Setter Property="FontSize"        Value="11"/>
+            <Setter Property="Foreground"      Value="#FF3B30"/>
+            <Setter Property="Background"      Value="#1F0A0A"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="7">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#2C1010"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Bd" Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <!-- ══════════════════════════════════════════
+         ROOT – rounded dark pane
+    ══════════════════════════════════════════ -->
+    <Border CornerRadius="16" Background="#0F0F11">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#2A2A2E" Offset="0"/>
+                <GradientStop Color="#18181B" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Border.BorderThickness>1</Border.BorderThickness>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="64"/>   <!-- Sidebar  -->
+                <ColumnDefinition Width="*"/>    <!-- Content  -->
+            </Grid.ColumnDefinitions>
+
+            <!-- ══════════════════════════════════════════
+                 LEFT SIDEBAR
+            ══════════════════════════════════════════ -->
+            <Border Grid.Column="0"
+                    Background="#09090B"
+                    CornerRadius="16,0,0,16"
+                    BorderThickness="0,0,1,0"
+                    BorderBrush="#1C1C1E">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="64"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Logo blob -->
+                    <Border x:Name="LauncherLogoBorder" Grid.Row="0" Width="34" Height="34" CornerRadius="10"
+                            HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#FF3B30" Offset="0"/>
+                                <GradientStop Color="#FF9500" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <TextBlock x:Name="LauncherLogoText" Text="W" FontSize="15" FontWeight="Black" Foreground="White"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Rectangle Grid.Row="0" Height="1" VerticalAlignment="Bottom"
+                               Fill="#1C1C1E" Margin="10,0"/>
+
+                    <!-- Nav: Apps + Projects -->
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,14,0,0">
+                        <Button x:Name="NavApps"
+                                Style="{StaticResource NavBtn}"
+                                Content="&#xE71D;"
+                                Tag="active"
+                                ToolTip="Apps"
+                                Click="NavApps_Click"/>
+                        <Button x:Name="NavProjects"
+                                Style="{StaticResource NavBtn}"
+                                Content="&#xE8B7;"
+                                ToolTip="Projects"
+                                Click="NavProjects_Click"
+                                Margin="0,6,0,0"/>
+                    </StackPanel>
+
+                    <!-- Settings pinned at bottom -->
+                    <Button Grid.Row="2"
+                            x:Name="NavSettings"
+                            Style="{StaticResource NavBtn}"
+                            Content="&#xE713;"
+                            ToolTip="Settings"
+                            Click="NavSettings_Click"
+                            HorizontalAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <!-- ══════════════════════════════════════════
+                 CONTENT AREA
+            ══════════════════════════════════════════ -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="54"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- ── Title bar ── -->
+                <Grid Grid.Row="0" Margin="22,0,12,0"
+                      MouseLeftButtonDown="WindowDrag_MouseDown">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="PageTitle" Grid.Column="0"
+                               Text="Apps"
+                               FontFamily="Inter, Segoe UI, sans-serif"
+                               FontSize="15" FontWeight="SemiBold"
+                               Foreground="#F2F2F7"
+                               VerticalAlignment="Center"/>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Button x:Name="BtnMinimize"
+                                Style="{StaticResource WinCtrlBtn}"
+                                Content="&#xE921;"
+                                ToolTip="Minimize"
+                                Margin="0,0,4,0"
+                                Click="BtnMinimize_Click"/>
+                        <Button x:Name="BtnClose"
+                                Style="{StaticResource WinCloseBtn}"
+                                Content="&#xE8BB;"
+                                ToolTip="Close"
+                                Click="BtnClose_Click"/>
+                    </StackPanel>
+                </Grid>
+                <Rectangle Grid.Row="0" Height="1" VerticalAlignment="Bottom" Fill="#1C1C1E"/>
+
+                <!-- ════════════════════════
+                     APPS VIEW
+                ════════════════════════ -->
+                <Grid x:Name="AppsView" Grid.Row="1">
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                                  VerticalScrollBarVisibility="Auto"
+                                  Padding="0,0,6,0">
+                        <!-- WrapPanel populated entirely in code-behind -->
+                        <WrapPanel x:Name="AppsWrapPanel"
+                                   Orientation="Horizontal"
+                                   Margin="16,16,10,16"/>
+                    </ScrollViewer>
+                </Grid>
+
+                <!-- ════════════════════════
+                     PROJECTS VIEW
+                ════════════════════════ -->
+                <Grid x:Name="ProjectsView" Grid.Row="1" Visibility="Collapsed">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="&#xE8B7;"
+                                   FontFamily="Segoe MDL2 Assets"
+                                   FontSize="52" Foreground="#252528"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="Projects"
+                                   FontFamily="Inter, Segoe UI, sans-serif"
+                                   FontSize="17" FontWeight="SemiBold"
+                                   Foreground="#3A3A3C"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,16,0,0"/>
+                        <TextBlock Text="Coming soon"
+                                   FontFamily="Inter, Segoe UI, sans-serif"
+                                   FontSize="12" Foreground="#2A2A2D"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,6,0,0"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- ════════════════════════
+                     SETTINGS VIEW
+                ════════════════════════ -->
+                <Grid x:Name="SettingsView" Grid.Row="1" Visibility="Collapsed">
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                                  VerticalScrollBarVisibility="Auto"
+                                  Padding="0,0,6,0">
+                        <!-- StackPanel populated entirely in code-behind -->
+                        <StackPanel x:Name="SettingsStackPanel"
+                                    Margin="24,20,18,20"/>
+                    </ScrollViewer>
+                </Grid>
+
+            </Grid><!-- /Content Grid -->
+        </Grid><!-- /Root Grid -->
+    </Border>
+</Window>
