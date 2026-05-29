@@ -67,3 +67,18 @@ To replace the default window and executable icon:
 
 ### 3. Pre-loading Apps for Distribution
 If you are packaging this launcher to give to a team, you can pre-configure the software list. Simply edit the `apps.json` file, add your custom paths, and distribute the JSON file alongside your compiled `.exe`. The launcher will read it automatically on startup.
+
+## 📥 Download
+
+Get the latest standalone executable and start organizing your workspace immediately. No installation or .NET SDK required!
+
+**Platform:** Windows 10/11 (x64) Only
+
+[![Download](https://img.shields.io/badge/Download-.EXE_for_Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/releases/latest/download/WhiteLabelLauncher.exe)
+
+*(Alternatively, you can click here to [Download WhiteLabelLauncher.exe](https://link-to-your-google-drive-or-mediafire.com))*
+
+> **⚠️ Note on Windows SmartScreen:** > Because this is a newly built, independent desktop application, Windows Defender might display a blue "Windows protected your PC" warning on the first launch. This is completely normal. 
+> To use the launcher, simply click **More info** ➔ **Run anyway**.
+
+---
