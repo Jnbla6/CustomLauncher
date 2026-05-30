@@ -1,9 +1,10 @@
+<div align="center">
+
 # 🚀 Custom Launcher
 
 <img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/3874997f-4ae0-49d3-9698-72029b7e1af6" />
 
 
-<div align="center">
   <br><br>
   <strong>A lightweight, portable, and fully responsive Windows desktop workspace built with C# and WPF.</strong>
   <br><br>
@@ -53,3 +54,6 @@ Clone this repository, open your terminal, and navigate to the project directory
 git clone [https://github.com/Jnbla6/CustomLauncher.git](https://github.com/Jnbla6/CustomLauncher.git)
 cd CustomLauncher
 dotnet run
+```
+
+@Badr
