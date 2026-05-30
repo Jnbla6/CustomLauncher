@@ -1,7 +1,6 @@
 # 🚀 Custom Launcher
 
 <div align="center">
-  <img src="app.ico" alt="Custom Launcher Logo" width="120" height="120">
   <br><br>
   <strong>A lightweight, portable, and fully responsive Windows desktop workspace built with C# and WPF.</strong>
   <br><br>
