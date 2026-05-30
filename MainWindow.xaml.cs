@@ -41,9 +41,28 @@ namespace WhiteLabelLauncher
         // ─────────────────────────────────────────────────────────────────
         //  Paths
         // ─────────────────────────────────────────────────────────────────
-        private static readonly string DataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "CustomLauncher");
-        private static readonly string AppsFile  = Path.Combine(DataDir, "apps.json");
-        private static readonly string SettingsFile = Path.Combine(DataDir, "settings.json");
+        private static readonly string DataDir;
+        private static readonly string AppsFile;
+        private static readonly string SettingsFile;
+
+        static MainWindow()
+        {
+            string localDir = AppContext.BaseDirectory;
+            string localAppsFile = Path.Combine(localDir, "apps.json");
+
+            if (File.Exists(localAppsFile))
+            {
+                DataDir = localDir;
+            }
+            else
+            {
+                string exeName = Path.GetFileNameWithoutExtension(Environment.ProcessPath) ?? "WhiteLabelLauncher";
+                DataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "CustomLauncher", exeName);
+            }
+
+            AppsFile = Path.Combine(DataDir, "apps.json");
+            SettingsFile = Path.Combine(DataDir, "settings.json");
+        }
 
         // ─────────────────────────────────────────────────────────────────
         //  State
