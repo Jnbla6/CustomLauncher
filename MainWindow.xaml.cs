@@ -1179,7 +1179,13 @@ namespace WhiteLabelLauncher
             }
             try
             {
-                Process.Start(new ProcessStartInfo { FileName = exePath, UseShellExecute = true });
+                var psi = new ProcessStartInfo { FileName = exePath, UseShellExecute = true };
+                string dir = Path.GetDirectoryName(exePath);
+                if (!string.IsNullOrEmpty(dir) && Directory.Exists(dir))
+                {
+                    psi.WorkingDirectory = dir;
+                }
+                Process.Start(psi);
             }
             catch (Exception ex)
             {
@@ -1225,7 +1231,13 @@ namespace WhiteLabelLauncher
                 }
                 try
                 {
-                    Process.Start(new ProcessStartInfo { FileName = project.FilePath, UseShellExecute = true });
+                    var psi = new ProcessStartInfo { FileName = project.FilePath, UseShellExecute = true };
+                    string dir = Path.GetDirectoryName(project.FilePath);
+                    if (!string.IsNullOrEmpty(dir) && Directory.Exists(dir))
+                    {
+                        psi.WorkingDirectory = dir;
+                    }
+                    Process.Start(psi);
                 }
                 catch (Exception ex)
                 {

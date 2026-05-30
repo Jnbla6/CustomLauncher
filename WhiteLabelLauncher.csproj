@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyName>WhiteLabelLauncher</AssemblyName>
+    <AssemblyName>CustomLauncher</AssemblyName>
     <RootNamespace>WhiteLabelLauncher</RootNamespace>
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
