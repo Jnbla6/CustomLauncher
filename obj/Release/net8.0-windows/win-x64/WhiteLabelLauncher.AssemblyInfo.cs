@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WhiteLabelLauncher")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+859fff5eb2648c19cf8d54a7c1cbb12a8d37dc58")]
 [assembly: System.Reflection.AssemblyProductAttribute("WhiteLabelLauncher")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WhiteLabelLauncher")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

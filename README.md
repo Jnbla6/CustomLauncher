@@ -2,6 +2,8 @@
 
 A lightweight, dynamic, and fully responsive Windows desktop launcher built with C# and WPF. Designed as a flexible "white-label" solution, this project allows anyone to gather multiple standalone applications, portable tools, or legacy `.exe` files into one unified, elegant workspace.
 
+[![Download for Windows](https://img.shields.io/badge/Download-.EXE_for_Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Jnbla6/WhiteLabelLauncher/raw/main/bin/Release/net8.0-windows/win-x64/publish/WhiteLabelLauncher.exe)
+
 ## 🎯 The Case for a White Label Launcher
 When working with multiple isolated programs, your desktop or start menu can quickly become cluttered. This launcher solves that by acting as a central, customizable hub. It is highly effective for:
 * **Creating a Custom Suite:** Grouping standalone software (like isolated design, video, or audio editing tools) into a single, cohesive interface.

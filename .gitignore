@@ -1,0 +1,40 @@
+## Visual Studio / .NET
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Ignore the obj directory entirely
+[Oo]bj/
+
+# Ignore all files in bin/ and publish/ directories
+[Bb]in/**/*
+publish/**/*
+
+# Unignore the directories themselves so git can traverse them to find .exe files
+![Bb]in/**/
+!publish/**/
+
+# Explicitly UN-IGNORE .exe files so they can be downloaded by people
+![Bb]in/**/*.exe
+!publish/**/*.exe
+
+# Ignore visual studio folder
+.vs/
+
+# Ignore IDE / OS files
+.idea/
+.vscode/
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Ignore temporary files
+*.tmp
+*.bak
+*.swp
+*.log

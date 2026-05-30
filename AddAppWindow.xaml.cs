@@ -17,8 +17,22 @@ namespace WhiteLabelLauncher
 
         /// <summary>Path of the selected custom icon image (empty = none chosen).</summary>
         private string _iconPath = "";
+        private string _appId = "";
+        private string _abbrev = "";
+        private string _description = "";
 
         public AddAppWindow() => InitializeComponent();
+
+        public void InitForEdit(AppEntry app)
+        {
+            _appId = app.Id;
+            _abbrev = app.Abbrev;
+            _description = app.Description;
+            NameBox.Text = app.Name;
+            PathBox.Text = app.ExePath;
+            if (!string.IsNullOrEmpty(app.IconPath))
+                ApplyIconPath(app.IconPath);
+        }
 
         // ─────────────────────────────────────────────────────────────────
         //  Window drag
@@ -139,10 +153,12 @@ namespace WhiteLabelLauncher
 
             Result = new AppEntry
             {
-                Id       = Guid.NewGuid().ToString(),
+                Id       = string.IsNullOrEmpty(_appId) ? Guid.NewGuid().ToString() : _appId,
                 Name     = NameBox.Text.Trim(),
                 ExePath  = PathBox.Text.Trim(),
-                IconPath = _iconPath           // "" if none chosen → gradient tile
+                IconPath = _iconPath,           // "" if none chosen → gradient tile
+                Abbrev   = _abbrev,
+                Description = _description
             };
 
             DialogResult = true;

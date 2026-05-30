@@ -1,0 +1,5 @@
+C:\Users\Badr\Desktop\Codes\WhiteLabelLauncher\publish\WhiteLabelLauncher.exe
+C:\Users\Badr\Desktop\Codes\WhiteLabelLauncher\publish\WhiteLabelLauncher.dll
+C:\Users\Badr\Desktop\Codes\WhiteLabelLauncher\publish\WhiteLabelLauncher.deps.json
+C:\Users\Badr\Desktop\Codes\WhiteLabelLauncher\publish\WhiteLabelLauncher.runtimeconfig.json
+C:\Users\Badr\Desktop\Codes\WhiteLabelLauncher\publish\WhiteLabelLauncher.pdb

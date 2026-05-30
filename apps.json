@@ -1,0 +1,20 @@
+{
+  "Categories": [
+    {
+      "CategoryName": "General",
+      "IconCode": "\uE71D",
+      "Apps": [
+        {
+          "Id": "default-drag-drop",
+          "Name": "Drag & Drop",
+          "ExePath": "",
+          "Description": "Drag your .exe or .lnk here",
+          "IconPath": "",
+          "Abbrev": "Hi"
+        }
+      ]
+    }
+  ],
+  "WatchedFolders": [],
+  "ManualProjects": []
+}

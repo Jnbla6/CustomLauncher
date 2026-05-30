@@ -10,4 +10,8 @@
     <ImplicitUsings>disable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="apps.json" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,35 @@
+{
+  "Categories": [
+    {
+      "CategoryName": "General",
+      "IconCode": "\uE71D",
+      "Apps": [
+        {
+          "Id": "58704de4-c191-4ebd-908a-e507e8f88621",
+          "Name": "PowerPoint",
+          "ExePath": "C:\\Users\\Badr\\Desktop\\PowerPoint.lnk",
+          "Description": "",
+          "IconPath": "",
+          "Abbrev": ""
+        }
+      ]
+    }
+  ],
+  "WatchedFolders": [],
+  "ManualProjects": [
+    {
+      "FileName": "WhiteLabelLauncher",
+      "FilePath": "C:\\Users\\Badr\\Desktop\\Codes\\WhiteLabelLauncher\\publish\\WhiteLabelLauncher.exe",
+      "LastModified": "2026-05-29T22:48:39.1614116+03:00",
+      "Extension": ".exe",
+      "AppId": "d9d66849-b84f-4acf-85a4-a20cd2a386fe"
+    },
+    {
+      "FileName": "Git-2.54.0-64-bit",
+      "FilePath": "C:\\Users\\Badr\\Downloads\\Git-2.54.0-64-bit.exe",
+      "LastModified": "2026-05-29T20:03:09.7165929+03:00",
+      "Extension": ".exe",
+      "AppId": "58704de4-c191-4ebd-908a-e507e8f88621"
+    }
+  ]
+}

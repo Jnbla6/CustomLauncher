@@ -14,9 +14,29 @@
 
     <Window.Resources>
 
-        <!-- ══════════════════════════════════════════
+        <ControlTemplate x:Key="ColorSwatchBtnTemplate" TargetType="Button">
+            <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="16" Cursor="Hand" BorderBrush="Transparent" BorderThickness="2">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal"/>
+                        <VisualState x:Name="MouseOver">
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="Bd" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="#E0E0E0" Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="Bd" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="#FFFFFF" Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Border>
+        </ControlTemplate>
+
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
              MINIMAL SCROLLBAR  (thin, 5 px track)
-        ══════════════════════════════════════════ -->
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
         <Style TargetType="{x:Type ScrollBar}">
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
             <Setter Property="Width"    Value="5"/>
@@ -52,9 +72,9 @@
             </Setter>
         </Style>
 
-        <!-- ══════════════════════════════════════════
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
              WINDOW CONTROL BUTTONS
-        ══════════════════════════════════════════ -->
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
         <Style x:Key="WinCtrlBtn" TargetType="Button">
             <Setter Property="Width"           Value="30"/>
             <Setter Property="Height"          Value="30"/>
@@ -94,9 +114,9 @@
             </Style.Triggers>
         </Style>
 
-        <!-- ══════════════════════════════════════════
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
              SIDEBAR NAV BUTTON
-        ══════════════════════════════════════════ -->
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
         <Style x:Key="NavBtn" TargetType="Button">
             <Setter Property="Width"           Value="44"/>
             <Setter Property="Height"          Value="44"/>
@@ -133,9 +153,9 @@
             </Setter>
         </Style>
 
-        <!-- ══════════════════════════════════════════
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
              SETTINGS BUTTONS  (Browse / Reset)
-        ══════════════════════════════════════════ -->
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
         <Style x:Key="SettingsBrowseBtn" TargetType="Button">
             <Setter Property="Height"          Value="28"/>
             <Setter Property="Padding"         Value="12,0"/>
@@ -224,9 +244,9 @@
 
     </Window.Resources>
 
-    <!-- ══════════════════════════════════════════
-         ROOT – rounded dark pane
-    ══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         ROOT â€“ rounded dark pane
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <Border CornerRadius="16" Background="#0F0F11">
         <Border.BorderBrush>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -242,9 +262,9 @@
                 <ColumnDefinition Width="*"/>    <!-- Content  -->
             </Grid.ColumnDefinitions>
 
-            <!-- ══════════════════════════════════════════
+            <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                  LEFT SIDEBAR
-            ══════════════════════════════════════════ -->
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
             <Border Grid.Column="0"
                     Background="#09090B"
                     CornerRadius="16,0,0,16"
@@ -264,7 +284,7 @@
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                 <GradientStop Color="#FF3B30" Offset="0"/>
-                                <GradientStop Color="#FF9500" Offset="1"/>
+                                <GradientStop Color="{DynamicResource AccentColor}" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
                         <TextBlock x:Name="LauncherLogoText" Text="W" FontSize="15" FontWeight="Black" Foreground="White"
@@ -273,21 +293,63 @@
                     <Rectangle Grid.Row="0" Height="1" VerticalAlignment="Bottom"
                                Fill="#1C1C1E" Margin="10,0"/>
 
-                    <!-- Nav: Apps + Projects -->
-                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,14,0,0">
-                        <Button x:Name="NavApps"
-                                Style="{StaticResource NavBtn}"
-                                Content="&#xE71D;"
-                                Tag="active"
-                                ToolTip="Apps"
-                                Click="NavApps_Click"/>
-                        <Button x:Name="NavProjects"
-                                Style="{StaticResource NavBtn}"
-                                Content="&#xE8B7;"
-                                ToolTip="Projects"
-                                Click="NavProjects_Click"
-                                Margin="0,6,0,0"/>
-                    </StackPanel>
+                    <!-- Nav: Categories + Add Tab + Projects -->
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" Margin="0,14,0,0">
+                        <StackPanel HorizontalAlignment="Center">
+                            <ItemsControl ItemsSource="{Binding Categories}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Style="{StaticResource NavBtn}"
+                                                ToolTip="{Binding CategoryName}"
+                                                Click="CategoryTab_Click"
+                                                Margin="0,0,0,6">
+                                            <Button.ContextMenu>
+                                                <ContextMenu>
+                                                    <MenuItem Header="Edit Category" Click="EditCategory_Click">
+                                                        <MenuItem.Icon>
+                                                            <TextBlock Text="&#xE70F;" FontFamily="Segoe MDL2 Assets" Foreground="#F2F2F7"/>
+                                                        </MenuItem.Icon>
+                                                    </MenuItem>
+                                                    <Separator/>
+                                                    <MenuItem Header="Delete Category" Click="DeleteCategory_Click">
+                                                        <MenuItem.Icon>
+                                                            <TextBlock Text="&#xE74D;" FontFamily="Segoe MDL2 Assets" Foreground="#FF3B30"/>
+                                                        </MenuItem.Icon>
+                                                    </MenuItem>
+                                                </ContextMenu>
+                                            </Button.ContextMenu>
+                                            <Button.Content>
+                                                <TextBlock Text="{Binding IconCode}"
+                                                           FontFamily="Segoe MDL2 Assets"
+                                                           FontSize="16"
+                                                           HorizontalAlignment="Center"
+                                                           VerticalAlignment="Center" />
+                                            </Button.Content>
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <!-- Add New Tab Button -->
+                            <Button x:Name="OpenAddTabBtn"
+                                    Style="{StaticResource NavBtn}"
+                                    ToolTip="Add New Tab"
+                                    Click="OpenAddTabDialog_Click"
+                                    Margin="0,4,0,16">
+                                <Button.Content>
+                                    <TextBlock Text="&#xE710;" FontFamily="Segoe MDL2 Assets" FontSize="14"/>
+                                </Button.Content>
+                            </Button>
+                            
+                            <Rectangle Height="1" Fill="#1C1C1E" Margin="4,0,4,16"/>
+
+                            <Button x:Name="NavProjects"
+                                    Style="{StaticResource NavBtn}"
+                                    Content="&#xE8B7;"
+                                    ToolTip="Projects"
+                                    Click="NavProjects_Click"/>
+                        </StackPanel>
+                    </ScrollViewer>
 
                     <!-- Settings pinned at bottom -->
                     <Button Grid.Row="2"
@@ -300,16 +362,16 @@
                 </Grid>
             </Border>
 
-            <!-- ══════════════════════════════════════════
+            <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                  CONTENT AREA
-            ══════════════════════════════════════════ -->
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="54"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- ── Title bar ── -->
+                <!-- â”€â”€ Title bar â”€â”€ -->
                 <Grid Grid.Row="0" Margin="22,0,12,0"
                       MouseLeftButtonDown="WindowDrag_MouseDown">
                     <Grid.ColumnDefinitions>
@@ -340,10 +402,10 @@
                 </Grid>
                 <Rectangle Grid.Row="0" Height="1" VerticalAlignment="Bottom" Fill="#1C1C1E"/>
 
-                <!-- ════════════════════════
+                <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                      APPS VIEW
-                ════════════════════════ -->
-                <Grid x:Name="AppsView" Grid.Row="1">
+                â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+                <Grid x:Name="AppsView" Grid.Row="1" AllowDrop="True" DragEnter="AppsView_DragEnter" Drop="AppsView_Drop" Background="Transparent">
                     <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                                   VerticalScrollBarVisibility="Auto"
                                   Padding="0,0,6,0">
@@ -354,32 +416,121 @@
                     </ScrollViewer>
                 </Grid>
 
-                <!-- ════════════════════════
+                <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                      PROJECTS VIEW
-                ════════════════════════ -->
-                <Grid x:Name="ProjectsView" Grid.Row="1" Visibility="Collapsed">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="&#xE8B7;"
-                                   FontFamily="Segoe MDL2 Assets"
-                                   FontSize="52" Foreground="#252528"
-                                   HorizontalAlignment="Center"/>
-                        <TextBlock Text="Projects"
-                                   FontFamily="Inter, Segoe UI, sans-serif"
-                                   FontSize="17" FontWeight="SemiBold"
-                                   Foreground="#3A3A3C"
-                                   HorizontalAlignment="Center"
-                                   Margin="0,16,0,0"/>
-                        <TextBlock Text="Coming soon"
-                                   FontFamily="Inter, Segoe UI, sans-serif"
-                                   FontSize="12" Foreground="#2A2A2D"
-                                   HorizontalAlignment="Center"
-                                   Margin="0,6,0,0"/>
+                â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+                <Grid x:Name="ProjectsView" Grid.Row="1" Visibility="Collapsed" Margin="16,16,10,16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                                
+                    <ScrollViewer Grid.Row="1"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  VerticalScrollBarVisibility="Auto">
+                        <WrapPanel>
+                            <ItemsControl x:Name="RecentProjectsItemsControl"
+                                          ItemsSource="{Binding RecentProjects}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <!-- Sleek Project Card Button -->
+                                        <Button Click="ProjectCard_Click" 
+                                                Cursor="Hand"
+                                                BorderThickness="0"
+                                                Background="Transparent"
+                                                Margin="0,0,16,16">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border x:Name="Bd"
+                                                            Width="180" Height="72"
+                                                            Background="#1A1A1D"
+                                                            CornerRadius="12"
+                                                            BorderBrush="#252528"
+                                                            BorderThickness="1">
+                                                        <Grid Margin="12,0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            
+                                                            <Border Grid.Column="0"
+                                                                    Width="42" Height="42"
+                                                                    CornerRadius="10"
+                                                                    Background="#2A2A2E"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"
+                                                                    Margin="0,0,12,0">
+                                                                <Grid>
+                                                                    <!-- Default Icon -->
+                                                                    <TextBlock Text="&#xE8A5;"
+                                                                               FontFamily="Segoe MDL2 Assets"
+                                                                               FontSize="20"
+                                                                               Foreground="#AEAEB2"
+                                                                               HorizontalAlignment="Center"
+                                                                               VerticalAlignment="Center"/>
+                                                                    <!-- Associated App Icon (hides default if present) -->
+                                                                    <Image Source="{Binding DisplayIcon}" Stretch="Uniform" Margin="6"/>
+                                                                </Grid>
+                                                            </Border>
+
+                                                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                                <TextBlock Text="{Binding FileName}"
+                                                                           FontFamily="Inter, Segoe UI, sans-serif"
+                                                                           FontSize="14" FontWeight="SemiBold"
+                                                                           Foreground="#F2F2F7"
+                                                                           TextTrimming="CharacterEllipsis"/>
+                                                                <TextBlock Text="{Binding LastModified, StringFormat='{}{0:d MMM, h:mm tt}'}"
+                                                                           FontFamily="Inter, Segoe UI, sans-serif"
+                                                                           FontSize="11"
+                                                                           Foreground="#8E8E93"
+                                                                           Margin="0,3,0,0"/>
+                                                            </StackPanel>
+                                                        </Grid>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="Bd" Property="Background" Value="#222226"/>
+                                                            <Setter TargetName="Bd" Property="BorderBrush" Value="#323235"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsPressed" Value="True">
+                                                            <Setter TargetName="Bd" Property="Background" Value="#2A2A2E"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            
+                            <!-- Add Project Button -->
+                            <Border Width="180" Height="72" Margin="0,0,16,16" Cursor="Hand" MouseLeftButtonUp="OpenAddProjectDialog_Click" Background="Transparent">
+                                <Grid>
+                                    <Rectangle RadiusX="12" RadiusY="12" Stroke="#252528" StrokeThickness="1.5" StrokeDashArray="4 3" Fill="#101013"/>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock Text="&#xE710;" FontFamily="Segoe MDL2 Assets" FontSize="16" Foreground="#4A4A4E" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                        <TextBlock Text="Add File" FontFamily="Inter, Segoe UI" FontSize="13" FontWeight="SemiBold" Foreground="#4A4A4E" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </WrapPanel>
+                    </ScrollViewer>
+                    
+                    <StackPanel x:Name="ProjectsEmptyState" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+                        <TextBlock Text="&#xE8B7;" FontFamily="Segoe MDL2 Assets" FontSize="48" Foreground="#3A3A3C" HorizontalAlignment="Center"/>
+                        <TextBlock Text="It's empty here" FontFamily="Inter, Segoe UI" FontSize="16" FontWeight="SemiBold" Foreground="#6E6E73" HorizontalAlignment="Center" Margin="0,16,0,0"/>
+                        <TextBlock Text="No recent projects were found in your watched folders." FontFamily="Inter, Segoe UI" FontSize="12" Foreground="#3A3A3C" HorizontalAlignment="Center" Margin="0,6,0,0"/>
                     </StackPanel>
                 </Grid>
 
-                <!-- ════════════════════════
+                <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                      SETTINGS VIEW
-                ════════════════════════ -->
+                â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
                 <Grid x:Name="SettingsView" Grid.Row="1" Visibility="Collapsed">
                     <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                                   VerticalScrollBarVisibility="Auto"
