@@ -1,6 +1,6 @@
 # 🚀 Custom Launcher
 
-<img width="1298" height="823" alt="image" src="https://github.com/user-attachments/assets/d16b9d1f-a514-49d1-98b3-1f5c6f72ad3f" />
+<img width="1298" height="823" alt="image" src="https://github.com/user-attachments/assets/3874997f-4ae0-49d3-9698-72029b7e1af6" />
 
 
 <div align="center">
