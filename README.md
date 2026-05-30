@@ -1,5 +1,8 @@
 # 🚀 Custom Launcher
 
+<img width="1298" height="823" alt="image" src="https://github.com/user-attachments/assets/d16b9d1f-a514-49d1-98b3-1f5c6f72ad3f" />
+
+
 <div align="center">
   <br><br>
   <strong>A lightweight, portable, and fully responsive Windows desktop workspace built with C# and WPF.</strong>
@@ -43,9 +46,6 @@ Get the latest standalone executable and start organizing your workspace immedia
 > **⚠️ Note on Windows SmartScreen:** Because this is a newly built, open-source desktop application, Windows Defender might display a security warning ("Windows protected your PC") on the first launch. Simply click **More info** ➔ **Run anyway**.
 
 ---
-
-## 🛠️ For Developers (Building from Source)
-2 or [.NET 8.0 SDK](https://dotnet.microsoft.com/download)
 
 ### Running Locally
 Clone this repository, open your terminal, and navigate to the project directory:
