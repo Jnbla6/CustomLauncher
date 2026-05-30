@@ -11,6 +11,11 @@
 # Ignore the obj directory entirely
 [Oo]bj/
 
+bin/
+obj/
+publish/
+*.exe
+
 # Ignore all files in bin/ and publish/ directories
 [Bb]in/**/*
 publish/**/*
