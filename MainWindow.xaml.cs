@@ -41,7 +41,7 @@ namespace WhiteLabelLauncher
         // ─────────────────────────────────────────────────────────────────
         //  Paths
         // ─────────────────────────────────────────────────────────────────
-        private static readonly string DataDir = AppDomain.CurrentDomain.BaseDirectory;
+        private static readonly string DataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "CustomLauncher");
         private static readonly string AppsFile  = Path.Combine(DataDir, "apps.json");
         private static readonly string SettingsFile = Path.Combine(DataDir, "settings.json");
 
