@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
@@ -83,7 +84,9 @@ namespace WhiteLabelLauncher
 
         public static Task<BitmapSource?> GetHighResIconAsync(string filePath)
         {
-            return Task.Run(() =>
+            var tcs = new TaskCompletionSource<BitmapSource?>();
+
+            Thread thread = new Thread(() =>
             {
                 try
                 {
@@ -92,7 +95,10 @@ namespace WhiteLabelLauncher
                     SHGetFileInfo(filePath, 0, ref shinfo, (uint)Marshal.SizeOf(shinfo), SHGFI_SYSICONINDEX);
 
                     if (shinfo.iIcon == 0)
-                        return null; // Failed to get icon index
+                    {
+                        tcs.SetResult(null);
+                        return;
+                    }
 
                     Guid iidImageList = new Guid("46EB5926-582E-4017-9FDF-E8998DAA0950");
                     IImageList? imageList = null;
@@ -123,7 +129,8 @@ namespace WhiteLabelLauncher
                                     src.Freeze(); // Make it cross-thread accessible
                                     return src;
                                 });
-                                return bitmap;
+                                tcs.SetResult(bitmap);
+                                return;
                             }
                             finally
                             {
@@ -131,13 +138,20 @@ namespace WhiteLabelLauncher
                             }
                         }
                     }
+                    tcs.SetResult(null);
                 }
                 catch
                 {
-                    // Ignore exceptions and return null fallback
+                    tcs.SetResult(null);
                 }
-                return null;
             });
+
+            // Shell operations (like SHGetImageList) require an STA thread to prevent Access Violations
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.IsBackground = true;
+            thread.Start();
+
+            return tcs.Task;
         }
     }
 }
